@@ -34,15 +34,15 @@
 <script src="./static/zepto.js"></script>
 <script>
 var new_game = function(){
-    var count = $("#count").val();
-    var upper = $("#upper").val();
-    var lower = $("#lower").val();
+    var count = parseInt($("#count").val());
+    var upper = parseInt($("#upper").val());
+    var lower = parseInt($("#lower").val());
     var locid = $("#locid").val();
-    if (lower>upper){
+    if (lower > upper){
         alert("下限不能超过上限!");
         return;
     }
-    if (upper>count/2){
+    if (upper > count/2){
         alert("间谍人数不能超过总人数的一半!");
         return;
     }
