@@ -36,6 +36,11 @@ class SpyFalls:
         game["locid"] = key
         return id
 
+    def get_roles(self, locid, scene):
+        if not locid in self.spyfalls:
+            return {}
+        return self.spyfalls[locid].roles.get(scene,{})
+
     def print_game(self, id):
         game = self.games.get(str(id))
         for k,v in game.items():

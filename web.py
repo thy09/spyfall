@@ -47,6 +47,13 @@ def status():
     game = spyfall.game(id)
     return jsonify(game)
 
+@app.route("/roles")
+def roles():
+    locid = request.args.get("locid")
+    scene = request.args.get("scene")
+    data = spyfall.get_roles(locid, scene)
+    return jsonify(data)
+
 if __name__ == "__main__":
     app.debug = True
     app.run(host = "0.0.0.0", port = 24987)

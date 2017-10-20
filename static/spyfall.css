@@ -123,3 +123,11 @@ p{
 input{
     border-bottom: #aaa 1px solid;
 }
+.role{
+    font-size: 14px; 
+    color: #777;
+}
+.scene{
+    font-size: 18px;
+    margin: 5px;
+}

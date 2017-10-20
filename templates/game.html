@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
 <title>Spyfall</title>
-<link rel="stylesheet" href="./static/spyfall.css"></link>
+<link rel="stylesheet" href="./static/spyfall.css?v=20171020v1"></link>
 </head>
 <body>
     <div style="display:none"><img src='./static/logo.jpg'></img></div>
@@ -130,9 +130,26 @@ $(document).ready(function(){
         var h = document.body.clientWidth/30;
         $(".word").css("font-size",h);
         $(".word p").css("height",h);
-        $(".hint").append($("<h3>可能场景列表如下</h3>"));
+        $(".hint").append($("<h3>可能场景列表如下(点击展开角色)</h3>"));
         for (var j in game.scenes){
-            var div = $("<p></p>").text(game.scenes[j]);
+            var div = $("<div class='scene'></div>").text(game.scenes[j]);
+            var scene_vals = game.scenes[j].split(":")
+            var scene_key = scene_vals[0];
+            (function(scene, locid, div){
+                div.click(function(){
+                    if (div.find(".role").length > 0){
+                        div.find(".role").toggleClass("hidden");
+                        return;
+                    }
+                    var url = "/roles?locid="+game.locid+"&scene="+scene;
+                    $.get(url,"", function(data){
+                        console.log(data);
+                        for (var i in data){
+                            div.append($("<p class='role'></p>").text(data[i]));
+                        }
+                    });
+                });
+            })(scene_key, game.locid, div);
             $(".hint").append(div);
         }
         $(".hint").append("<p>分享此页面给朋友们即可开始玩耍！</p>");
