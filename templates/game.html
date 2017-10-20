@@ -15,21 +15,29 @@
         <div><label>间谍上限:</label><select id = "upper"></select></div>
         <div><label>间谍下限:</label><select id = "lower"></select></div>
         <div><label>使用词库:</label><select id = "locid"></select></div>
+        <div><label>场景数量:</label><select id = "scenecount"></select></div>
     </div>
     <div class="hint"></div>
     <div class="discussion"></div>
     <div class="rules">
-        <p>规则: 每一盘游戏会被分配某些场景中的一个，大部分玩家会在这个场景中扮演某个角色。</p>
+        <h2>游戏规则</h2>
+        <h3>基本配置</h3>
+        <p>每一盘游戏会被分配某些场景中的一个，大部分玩家会在这个场景中扮演某个角色。</p>
         <p>例如: 大学的教授/学生/看门人etc。</p>
         <p>少数玩家是间谍，并不知道场景是什么。</p>
+        <h3>游戏目标</h3>
         <p>间谍的目标是找到这个场景或在限定时间内不被发现，其他人的目标是找出所有的间谍。</p>
-        <p>讨论规则为，从任意玩家开始，它可以向任意另一名玩家发问，被问的玩家必须回答。</p>
+        <h3>游戏流程</h3>
+        <p>从任意玩家开始，他可以向任意另一名玩家发问，被问的玩家必须回答。</p>
         <p>然后被问的玩家再选择一名其他玩家进行发问（但不能选择刚才问你的人）。</p>
-        <p>如此循环往复，任意时刻任意玩家可以提出指认某人为间谍，若(总人数-间谍最大数量)个人同意指认，则被指认的人亮明身份。</p>
-        <p>若错误，间谍方直接获胜，每个间谍得2分，若正确，则非间谍方获胜，该间谍外所有人得1分，指出者得2分</p>
-        <p>设置某个时限(标准局建议八分钟)，时间到时强制开始指认，若无法统一意见则间谍方获胜。</p>
-        <p>建议每次玩多盘(一般设定为5)，最后统计总分。</p>
-        <p>变体规则1: 允许0个间谍存在，若所有人一致同意无间谍，且确实无间谍，则所有人共同胜利。</p>
+        <h3>游戏结算</h3>
+        <p>任意时刻任意玩家可以提出指认某人为间谍，若(总人数-间谍最大数量)个人同意指认，则被指认的人亮明身份。</p>
+        <p>1. 指认错误，间谍方直接获胜，每个间谍得2分</p>
+        <p>2. 指认正确，则非间谍方获胜，该间谍外所有人得1分(其余间谍也得分)，指出者得2分</p>
+        <p>3. 设置时限(8人局建议8分钟)，到时限强制开始指认，若无法统一意见则间谍方获胜得2分。</p>
+        <p>每次玩多盘(一般设定为5)，最后统计总分。</p>
+        <h3>变体规则</h3>
+        <p>变体规则1: 允许0个间谍存在，若所有人一致同意无间谍，且确实无间谍，则所有人共同胜利。提出无间谍者得1分。</p>
         <p>变体规则2: 发现一个间谍后，若还存在其他间谍，游戏继续进行，直到所有间谍都被找到/时间到/指认错误</p>
         <p>变体规则3: 每次指认时只需要过半数人同意指认即让被指认的人亮明身份</p>
     </div>
@@ -41,6 +49,7 @@ var new_game = function(){
     var upper = parseInt($("#upper").val());
     var lower = parseInt($("#lower").val());
     var locid = $("#locid").val();
+    var scenecount = parseInt($("#scenecount").val());
     if (lower > upper){
         alert("下限不能超过上限!");
         return;
@@ -49,7 +58,7 @@ var new_game = function(){
         alert("间谍人数不能超过总人数的一半!");
         return;
     }
-    var url = "./create?count="+count+"&upper="+upper+"&lower="+lower+"&locid="+locid;
+    var url = "./create?count="+count+"&upper="+upper+"&lower="+lower+"&locid="+locid + "&scenecount="+scenecount;
     window.location.href = url;
 }
 var add_players = function(players, roles, scenes, scene, spy_count){
@@ -87,6 +96,7 @@ $(document).ready(function(){
         console.log(game);
         add_players(game.players, game.roles, game.scenes, game.loc, game.spy_count);
         var max_count = 30;
+        var max_scene = 50;
         for (var i=2;i<=max_count;i++){
             $("#count").append($("<option value='"+i+"'>"+i+"</option>"));
         }
@@ -96,9 +106,13 @@ $(document).ready(function(){
         for (var i=0;i<=max_count/2;i++){
             $("#lower").append($("<option value='"+i+"'>"+i+"</option>"));
         }
+        for (var i=5;i<=max_scene;i++){
+            $("#scenecount").append($("<option value='"+i+"'>"+i+"</option>"));
+        }
         $("#count").val(game.count);
         $("#upper").val(game.upper);
         $("#lower").val(game.lower);
+        $("#scenecount").val(game.scenecount);
         var locids = ["zh-cn-26", "zh-tw-52"];
         for (var i in locids){
             $("#locid").append($("<option value='"+locids[i]+"''>"+locids[i]+"</option>"));
@@ -107,7 +121,7 @@ $(document).ready(function(){
         var h = document.body.clientWidth/30;
         $(".word").css("font-size",h);
         $(".word p").css("height",h);
-        $(".hint").append($("<h3>所有场景列表如下</h3>"));
+        $(".hint").append($("<h3>可能场景列表如下</h3>"));
         for (var j in game.scenes){
             var div = $("<p></p>").text(game.scenes[j]);
             $(".hint").append(div);

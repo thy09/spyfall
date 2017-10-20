@@ -22,7 +22,7 @@ class SpyFalls:
     def game(self, id):
         return self.games.get(str(id))
 
-    def create(self, player_count, upper, lower, key = "zh-cn-26"):
+    def create(self, player_count, upper, lower, scene_count = 10, key = "zh-cn-26"):
         fname = "%s.json" % (key)
         if not os.path.exists(fname):
             key = "zh-cn-26"
@@ -30,7 +30,7 @@ class SpyFalls:
         if not key in self.spyfalls:
             self.spyfalls[key] = SpyFall(fname)
         id = self.gen_id()
-        game = self.spyfalls[key].create(player_count, upper, lower)
+        game = self.spyfalls[key].create(player_count, upper, lower, scene_count)
         self.games[str(id)] = game
         game["id"] = id
         game["locid"] = key
@@ -61,20 +61,29 @@ class SpyFall:
                 continue
             self.roles[name] = roles
         self.scenes = []
+        self.scene2name = {}
         for key,val in self.names.items():
-            self.scenes.append("%s:%s" % (key, val))
+            scenename = "%s:%s" % (key, val)
+            self.scenes.append(scenename)
+            self.scene2name[key] = scenename
         self.games = {}
         if len(self.roles) < 3:
             print "Error Handle"
             return
 
-    def create(self, player_count, upper, lower = 0):
+    def create(self, player_count, upper, lower = 0, scene_count = 10):
         game = {}
         game["upper"] = upper
         game["lower"] = lower
         game["spy_count"] = random.randint(lower, upper)
         game["count"] = player_count
-        loc = random.choice(self.roles.keys())
+        max_scene = len(self.roles.keys())
+        if scene_count > max_scene:
+            scene_count = max_scene
+        scenes = random.sample(self.roles.keys(), scene_count)
+        game["scenes"] = map(lambda s:self.scene2name[s], scenes)
+        loc = random.choice(scenes)
+        game["scenecount"] = scene_count
         game["loc"] = "%s:%s" % (loc, self.names[loc])
         players = [u"Spy:间谍"] * game["spy_count"]
         remain = player_count - game["spy_count"]
@@ -87,7 +96,6 @@ class SpyFall:
         random.shuffle(players)
         game["players"] = players
         game["roles"] = roles
-        game["scenes"] = self.scenes
         return game
 
 if __name__ == "__main__":

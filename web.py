@@ -22,12 +22,13 @@ def create():
     if count<3:
         return "INVALID_PLAYER_COUNT"
     upper = int(request.args.get("upper", (count+7)/8))
-    lower = int(request.args.get("lower", 0))
+    lower = int(request.args.get("lower", 1))
     locid = request.args.get("locid", "zh-cn-26")
+    scene_count = int(request.args.get("scenecount", 10))
     global spyfall
     if spyfall is None:
         spyfall = spyfall_game.SpyFalls()
-    id = spyfall.create(count, upper, lower, key = locid)
+    id = spyfall.create(count, upper, lower, scene_count, key = locid)
     return redirect(url_for(".play", id = id))
 
 @app.route("/play")
