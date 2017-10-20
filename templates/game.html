@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
+<title>Codenames</title>
+<link rel="stylesheet" href="./static/spyfall.css"></link>
+</head>
+<body>
+    <div style="display:none"><img src='./static/logo.png'></img></div>
+    <div><img width = "100%" src = "./static/locations.jpg"></div>
+    <div class="words"></div>
+    <div class="btn" onclick = new_game()>新建游戏</div>
+    <div class="newgame">
+        <div><label>玩家人数:</label><input id = "count"></input></div>
+        <div><label>间谍上限:</label><input id = "upper"></input></div>
+        <div><label>间谍下限:</label><input id = "lower"></input></div>
+    </div>
+    <div class="captain_words hidden"></div>
+    <div class="hint"></div>
+    <div class="discussion"></div>
+    <div class="rules">
+        <p>规则: 每一盘游戏会被分配上述30个场景中的一个，大部分玩家会在这个场景中扮演某个角色。</p>
+        <p>例如: 大学的教授/学生/看门人etc。</p>
+        <p>少数玩家是间谍，并不知道场景是什么。</p>
+        <p>间谍的目标是找到这个场景或在限定时间内不被发现，其他人的目标是找出所有的间谍。</p>
+        <p>讨论规则为，从任意玩家开始，它可以向任意另一名玩家发问，被问的玩家必须回答。</p>
+        <p>然后被问的玩家再选择一名其他玩家进行发问（但不能选择刚才问你的人）。</p>
+        <p>如此循环往复，任意时刻任意玩家可以提出指认某人为间谍，若绝大多数人同意指认，则被指认的人亮明身份。</p>
+        <p>若错误，间谍方直接获胜，若正确且无其他间谍，则非间谍方获胜，若还有其他间谍，则游戏继续进行。</p>
+        <p>设置某个时限(标准局建议八分钟)，时间到时强制开始指认，若无法统一意见则间谍方获胜。</p>
+        <p>变体规则:允许0个间谍存在，若所有人一致同意无间谍，且确实无间谍，则所有人共同胜利。</p>
+    </div>
+</body>
+<script src="./static/zepto.js"></script>
+<script>
+var new_game = function(){
+    var count = $("#count").val();
+    var upper = $("#upper").val();
+    var lower = $("#lower").val();
+    var url = "./create?count="+count+"&upper="+upper+"&lower="+lower;
+    window.location.href = url;
+}
+var add_players = function(players, roles, scenes, scene, spy_count){
+    for (var i in players){
+        var player = players[i];
+        var div = $("<div></div>").addClass("word").attr("id", i).html("<p>" + i + "</p>");
+        $(".words").append(div);
+    }
+    $(".words").append("<div style='clear:both'></div>");
+    $(".words .word").each(function(idx, elm){
+        $(elm).click(function(){
+            var idx = parseInt($(elm).attr("id"));
+            if (!confirm("确定选择"+idx+"号？")){
+                return;
+            }
+            $(".words div").remove();
+            var div = $("<div class='p'></div>").text("编号"+idx+"的身份是:" + players[idx]);
+            $(".words").prepend(div);
+            if (players[idx].indexOf("Spy")<0){
+                $(".words").prepend($("<p>当前场景为: "+ scene +"</p>"))
+                $(".words").append($("<h3>该场景角色如下</h3>"));
+                for (var j in roles){
+                    var div = $("<p></p>").text(roles[j]);
+                    $(".words").append(div);
+                }
+            }else{
+                $(".words").append($("<p>共有"+spy_count+"名间谍</p>"));
+            }
+            $(".words").append($("<p></p>"));
+            $(".words").append($("<h3>所有场景列表如下</h3>"));
+                for (var j in scenes){
+                    var div = $("<p></p>").text(scenes[j]);
+                    $(".words").append(div);
+                }
+        });
+    });
+}
+$(document).ready(function(){
+    $.get("/status"+location.search,"",function(game){
+        console.log(game);
+        add_players(game.players, game.roles, game.scenes, game.loc, game.spy_count);
+        $("#count").val(game.count);
+        $("#upper").val(game.upper);
+        $("#lower").val(game.lower);
+        var h = document.body.clientWidth/30;
+        $(".word").css("font-size",h);
+        $(".word p").css("height",h);
+        $(".hint").append("<p>分享此页面给朋友们即可开始玩耍！</p>")
+    });
+});
+</script>
+</html>

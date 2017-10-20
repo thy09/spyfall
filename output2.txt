@@ -1,0 +1,208 @@
+Spy:间谍
+Airplane ; First Class Passenger:飞机;头等舱乘客
+Airplane ; Air Marshall:飞机;空军中将
+Airplane ; Mechanic:飞机;机械师
+Airplane ; Economy Passenger:飞机;经济舱旅客
+Airplane ; Stewardess:飞机;空姐
+Airplane ; Captain:飞机;机长
+Airplane ; Co-Pilot:飞机;副驾驶
+Spy:间谍
+Bank ; Armored Car Driver:银行;装甲车司机
+Bank ; Manager:银行;经理
+Bank ; Consultant:银行;顾问
+Bank ; Customer:银行;客户
+Bank ; Robber:银行;强盗
+Bank ; Security Guard:银行;警卫
+Bank ; Teller:银行;出纳员
+Spy:间谍
+Beach ; Beach Waitress:海滩;女服务生
+Beach ; Kite Surfer:海滩;风筝冲浪者
+Beach ; Lifeguard:海滩;救生员
+Beach ; Theif:海滩;小偷
+Beach ; Beach Goer:海滩;海滩游客
+Beach ; Beach Photographer:海滩;海滩摄影师
+Beach ; Ice Cream Truck Driver:海滩;冰淇淋卡车司机
+Spy:间谍
+Casino ; Bartender:赌场;酒保
+Casino ; Head Security Guard:赌场;保安主管
+Casino ; Bouncer:赌场;保镖
+Casino ; Manager:赌场;经理
+Casino ; Hustler:赌场;骗子
+Casino ; Dealer:赌场;经销商
+Casino ; Gambler:赌场;赌徒
+Spy:间谍
+Circus Tent ; Acrobat:马戏团帐篷;杂技演员
+Circus Tent ; Animal Trainer:马戏团帐篷;动物训练师
+Circus Tent ; Magician:马戏团帐篷;魔术师
+Circus Tent ; Visitor:马戏团帐篷;参观者
+Circus Tent ; Fire Eater:马戏团帐篷;食火者
+Circus Tent ; Clown:马戏团帐篷;小丑
+Circus Tent ; Juggler:马戏团帐篷;杂耍
+Spy:间谍
+Corporate Party ; Entertainer:公司聚会;艺人
+Corporate Party ; Manager:公司聚会;经理
+Corporate Party ; Unwelcomed Guest:公司聚会;不受欢迎的客人
+Corporate Party ; Owner:公司聚会;董事
+Corporate Party ; Secretary:公司聚会;秘书长
+Corporate Party ; Accountant:公司聚会;会计
+Corporate Party ; Delivery Boy:公司聚会;送货小弟
+Spy:间谍
+Crusader Army ; Monk:十字军;和尚
+Crusader Army ; Imprisoned Arab:十字军;被监禁的阿拉伯人
+Crusader Army ; Servant:十字军;仆人
+Crusader Army ; Bishop:十字军;主教
+Crusader Army ; Squire:十字军;乡绅
+Crusader Army ; Archer:十字军;弓箭手
+Crusader Army ; Knight:十字军;骑士
+Spy:间谍
+Day Spa ; Customer:日间水疗;客户
+Day Spa ; Stylist:日间水疗;造型师
+Day Spa ; Masseuse:日间水疗;按摩师
+Day Spa ; Manicurist:日间水疗;美甲师
+Day Spa ; Makeup Artist:日间水疗;化妆师
+Day Spa ; Dermatologist:日间水疗;皮肤科医生
+Day Spa ; Beautician:日间水疗;美容师
+Spy:间谍
+Embassy ; Security Guard:大使馆;警卫
+Embassy ; Secretary:大使馆;秘书长
+Embassy ; Ambassador:大使馆;大使
+Embassy ; Government Official:大使馆;政府官员
+Embassy ; Tourist:大使馆;旅客
+Embassy ; Refugee:大使馆;难民
+Embassy ; Diplomat:大使馆;外交官
+Spy:间谍
+Hospital ; Nurse:医院;护士
+Hospital ; Doctor:医院;医生
+Hospital ; Anesthesiologist:医院;麻醉师
+Hospital ; Intern:医院;实习生
+Hospital ; Patient:医院;病人
+Hospital ; Therapist:医院;治疗师
+Hospital ; Surgeon:医院;医生
+Spy:间谍
+Hotel ; Doorman:酒店;门卫
+Hotel ; Security Guard:酒店;警卫
+Hotel ; Manager:酒店;经理
+Hotel ; Housekeeper:酒店;管家
+Hotel ; Customer:酒店;客户
+Hotel ; Bartender:酒店;酒保
+Hotel ; Bellman:酒店;行李员
+Spy:间谍
+Military Base ; Deserter:军事基地;逃兵
+Military Base ; Colonel:军事基地;上校
+Military Base ; Medic:军事基地;医生
+Military Base ; Soldier:军事基地;士兵
+Military Base ; Sniper:军事基地;狙击手
+Military Base ; Officer:军事基地;负责人
+Military Base ; Tank Engineer:军事基地;坦克工程师
+Spy:间谍
+Movie Studio ; Stuntman:电影制片厂;特技演员
+Movie Studio ; Sound Engineer:电影制片厂;音响工程师
+Movie Studio ; Cameraman:电影制片厂;摄影师
+Movie Studio ; Director:电影制片厂;导演
+Movie Studio ; Costume Artist:电影制片厂;服装设计师
+Movie Studio ; Actor:电影制片厂;演员
+Movie Studio ; Producer:电影制片厂;制片人
+Spy:间谍
+Ocean Liner ; Rich Passenger:远洋班轮;富有旅客
+Ocean Liner ; Cook:远洋班轮;厨师
+Ocean Liner ; Captain:远洋班轮;船长
+Ocean Liner ; Bartender:远洋班轮;酒保
+Ocean Liner ; Musician:远洋班轮;音乐家
+Ocean Liner ; Waiter:远洋班轮;服务员
+Ocean Liner ; Mechanic:远洋班轮;机械师
+Spy:间谍
+Passenger Train ; Mechanic:客运列车;机械师
+Passenger Train ; Border Patrol:客运列车;边境巡逻
+Passenger Train ; Train Attendant:客运列车;火车乘务员
+Passenger Train ; Passenger:客运列车;乘客
+Passenger Train ; Restaurant Chef:客运列车;餐厅厨师
+Passenger Train ; Engineer:客运列车;工程师
+Passenger Train ; Stoker:客运列车;锅炉人员
+Spy:间谍
+Pirate Ship ; Cook:海盗船;厨师
+Pirate Ship ; Sailor:海盗船;水手
+Pirate Ship ; Slave:海盗船;奴隶
+Pirate Ship ; Cannoneer:海盗船;炮手
+Pirate Ship ; Bound Prisoner:海盗船;捆绑囚犯
+Pirate Ship ; Cabin Boy:海盗船;船上侍者
+Pirate Ship ; Brave Captain:海盗船;勇敢的队长
+Spy:间谍
+Polar Station ; Medic:极地站;医生
+Polar Station ; Geologist:极地站;地质学家
+Polar Station ; Expedition Leader:极地站;探险领袖
+Polar Station ; Biologist:极地站;生物学家
+Polar Station ; Radioman:极地站;无线电工程师
+Polar Station ; Hydrologist:极地站;文学家
+Polar Station ; Meteorologist:极地站;气象学家
+Spy:间谍
+Police Station ; Detective:派出所;侦探
+Police Station ; Lawyer:派出所;律师
+Police Station ; Journalist:派出所;记者
+Police Station ; Criminalist:派出所;犯人
+Police Station ; Archivist:派出所;档案保管员
+Police Station ; Patrol Officer:派出所;巡警
+Police Station ; Criminal:派出所;刑事
+Spy:间谍
+Restaurant ; Musician:餐厅;音乐家
+Restaurant ; Customer:餐厅;客户
+Restaurant ; Bouncer:餐厅;保镖
+Restaurant ; Hostess:餐厅;女服务员
+Restaurant ; Head Chef:餐厅;主厨
+Restaurant ; Food Critic:餐厅;食品评论家
+Restaurant ; Waiter:餐厅;服务员
+Spy:间谍
+School ; Gym Teacher:学校;体育教师
+School ; Student:学校;学生
+School ; Principal:学校;校长
+School ; Security Guard:学校;警卫
+School ; Janitor:学校;看门人
+School ; Lunch Lady:学校;午餐女士
+School ; Maintenance Man:学校;维修人
+Spy:间谍
+Service Station ; Manager:服务站;经理
+Service Station ; Tire Specialist:服务站;轮胎专家
+Service Station ; Biker:服务站;自行车
+Service Station ; Car Owner:服务站;车主
+Service Station ; Car Wash Operator:服务站;洗车操作员
+Service Station ; Electrician:服务站;电工
+Service Station ; Auto Mechanic:服务站;汽车修理工
+Spy:间谍
+Space Station ; Engineer:空间站;工程师
+Space Station ; Alien:空间站;外星人
+Space Station ; Space Tourist:空间站;太空旅游者
+Space Station ; Pilot:空间站;飞行员
+Space Station ; Commander:空间站;指挥官
+Space Station ; Scientist:空间站;科学家
+Space Station ; Doctor:空间站;医生
+Spy:间谍
+Submarine ; Cook:潜艇;厨师
+Submarine ; Commander:潜艇;指挥官
+Submarine ; SONAR Technician:潜艇;声纳技术员
+Submarine ; Electronics Technician:潜艇;电子技术员
+Submarine ; Sailor:潜艇;水手
+Submarine ; Radioman:潜艇;无线电操作员
+Submarine ; Navigator:潜艇;导航员
+Spy:间谍
+Supermarket ; Customer:超市;客户
+Supermarket ; Cashier:超市;出纳
+Supermarket ; Butcher:超市;屠夫
+Supermarket ; Janitor:超市;看门
+Supermarket ; Security Guard:超市;警卫
+Supermarket ; Food Sample Demonstrator:超市;食品样品演示者
+Supermarket ; Shelf Stocker:超市;货架装货工
+Spy:间谍
+Theater ; Coat Check Lady:剧院;大衣检查女士
+Theater ; Prompter:剧院;台词提示员
+Theater ; Cashier:剧院;收银员
+Theater ; Visitor:剧院;参观者
+Theater ; Director:剧院;导演
+Theater ; Actor:剧院;演员
+Theater ; Crewman:剧院;工作人员
+Spy:间谍
+University ; Graduate Student:大学;研究生
+University ; Professor:大学;教授
+University ; Dean:大学;院长
+University ; Psychologist:大学;心理学家
+University ; Maintenance Man:大学;维修人员
+University ; Student:大学;学生
+University ; Janitor:大学;看门
