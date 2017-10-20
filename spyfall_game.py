@@ -22,7 +22,7 @@ class SpyFalls:
     def game(self, id):
         return self.games.get(str(id))
 
-    def create(self, player_count, upper, lower, scene_count = 10, key = "zh-cn-26"):
+    def create(self, player_count, upper, lower, scene_count = 10, key = "zh-cn-26", spyschool = 0):
         fname = "%s.json" % (key)
         if not os.path.exists(fname):
             key = "zh-cn-26"
@@ -30,7 +30,7 @@ class SpyFalls:
         if not key in self.spyfalls:
             self.spyfalls[key] = SpyFall(fname)
         id = self.gen_id()
-        game = self.spyfalls[key].create(player_count, upper, lower, scene_count)
+        game = self.spyfalls[key].create(player_count, upper, lower, scene_count, spyschool)
         self.games[str(id)] = game
         game["id"] = id
         game["locid"] = key
@@ -71,7 +71,7 @@ class SpyFall:
             print "Error Handle"
             return
 
-    def create(self, player_count, upper, lower = 0, scene_count = 10):
+    def create(self, player_count, upper, lower = 0, scene_count = 10, spyschool = 0):
         game = {}
         game["upper"] = upper
         game["lower"] = lower
@@ -94,6 +94,10 @@ class SpyFall:
         if remain > 0:
             players += random.sample(roles, remain)
         random.shuffle(players)
+        if spyschool == 1:
+            if random.randint(0,scene_count) == 0:
+                players = [u"Spy:间谍"] * player_count
+        game["spyschool"] = spyschool
         game["players"] = players
         game["roles"] = roles
         return game

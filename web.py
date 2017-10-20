@@ -25,10 +25,11 @@ def create():
     lower = int(request.args.get("lower", 1))
     locid = request.args.get("locid", "zh-cn-26")
     scene_count = int(request.args.get("scenecount", 10))
+    spy_school = int(request.args.get("spyschool", 0))
     global spyfall
     if spyfall is None:
         spyfall = spyfall_game.SpyFalls()
-    id = spyfall.create(count, upper, lower, scene_count, key = locid)
+    id = spyfall.create(count, upper, lower, scene_count, key = locid, spyschool = spy_school)
     return redirect(url_for(".play", id = id))
 
 @app.route("/play")

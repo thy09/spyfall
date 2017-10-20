@@ -16,6 +16,10 @@
         <div><label>间谍下限:</label><select id = "lower"></select></div>
         <div><label>使用词库:</label><select id = "locid"></select></div>
         <div><label>场景数量:</label><select id = "scenecount"></select></div>
+        <div><label>间谍学校:</label><select id = "spyschool">
+            <option value="0">不允许</option>
+            <option value="1">允许</option>
+        </select></div>
     </div>
     <div class="hint"></div>
     <div class="discussion"></div>
@@ -31,15 +35,18 @@
         <p>从任意玩家开始，他可以向任意另一名玩家发问，被问的玩家必须回答。</p>
         <p>然后被问的玩家再选择一名其他玩家进行发问（但不能选择刚才问你的人）。</p>
         <h3>游戏结算</h3>
-        <p>任意时刻任意玩家可以提出指认某人为间谍，若(总人数-间谍最大数量)个人同意指认，则被指认的人亮明身份。</p>
+        <p>任意时刻任意玩家(包括间谍)可以提出指认某人为间谍，若(总人数-间谍最大数量)个人同意指认，则被指认的人亮明身份。</p>
         <p>1. 指认错误，间谍方直接获胜，每个间谍得2分</p>
-        <p>2. 指认正确，则非间谍方获胜，该间谍外所有人得1分(其余间谍也得分)，指出者得2分</p>
-        <p>3. 设置时限(8人局建议8分钟)，到时限强制开始指认，若无法统一意见则间谍方获胜得2分。</p>
+        <p>2. 指认正确，则非间谍方获胜，被指认的间谍外所有人得1分(其余间谍也得分)，指出者得2分</p>
+        <p>3. 任意间谍任意时刻可跳出来指认地点，此时其他所有间谍也必须同时亮明身份，每个间谍指认一个地点，若至少有一名间谍指认正确，则间谍方获胜各得2分</p>
+        <p>4. 设置时限(8人局建议8分钟)，到时限强制开始指认，若无法统一意见则间谍方获胜得2分。</p>
         <p>每次玩多盘(一般设定为5)，最后统计总分。</p>
         <h3>变体规则</h3>
         <p>变体规则1: 允许0个间谍存在，若所有人一致同意无间谍，且确实无间谍，则所有人共同胜利。提出无间谍者得1分。</p>
         <p>变体规则2: 发现一个间谍后，若还存在其他间谍，游戏继续进行，直到所有间谍都被找到/时间到/指认错误</p>
         <p>变体规则3: 每次指认时只需要过半数人同意指认即让被指认的人亮明身份</p>
+        <p>变体规则4: 一个间谍跳出来时其他间谍可保持沉默, 若间谍指认地点错误，则该间谍被移出游戏，其余间谍继续参与游戏。间谍指认得分为留下了的间谍数量，其余间谍得1分</p>
+        <p>变体规则5: 在4的基础上，存在一个地点为"间谍学校"，此时间谍看到的间谍数量是错误的，所有人都是间谍，但流程按照看到的虚假间谍数量为准。</p>
     </div>
 </body>
 <script src="./static/zepto.js"></script>
@@ -50,6 +57,7 @@ var new_game = function(){
     var lower = parseInt($("#lower").val());
     var locid = $("#locid").val();
     var scenecount = parseInt($("#scenecount").val());
+    var spyschool = $("#spyschool").val();
     if (lower > upper){
         alert("下限不能超过上限!");
         return;
@@ -58,7 +66,7 @@ var new_game = function(){
         alert("间谍人数不能超过总人数的一半!");
         return;
     }
-    var url = "./create?count="+count+"&upper="+upper+"&lower="+lower+"&locid="+locid + "&scenecount="+scenecount;
+    var url = "./create?count="+count+"&upper="+upper+"&lower="+lower+"&locid="+locid + "&scenecount="+scenecount+"&spyschool="+spyschool;
     window.location.href = url;
 }
 var add_players = function(players, roles, scenes, scene, spy_count){
@@ -106,13 +114,14 @@ $(document).ready(function(){
         for (var i=0;i<=max_count/2;i++){
             $("#lower").append($("<option value='"+i+"'>"+i+"</option>"));
         }
-        for (var i=5;i<=max_scene;i++){
+        for (var i=2;i<=max_scene;i++){
             $("#scenecount").append($("<option value='"+i+"'>"+i+"</option>"));
         }
         $("#count").val(game.count);
         $("#upper").val(game.upper);
         $("#lower").val(game.lower);
         $("#scenecount").val(game.scenecount);
+        $("#spyschool").val(game.spyschool);
         var locids = ["zh-cn-26", "zh-tw-52"];
         for (var i in locids){
             $("#locid").append($("<option value='"+locids[i]+"''>"+locids[i]+"</option>"));
