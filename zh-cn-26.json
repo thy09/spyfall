@@ -1,0 +1,266 @@
+{
+ "names": {
+  "Crusader Army": "\u5341\u5b57\u519b", 
+  "Police Station": "\u6d3e\u51fa\u6240", 
+  "Polar Station": "\u6781\u5730\u7ad9", 
+  "Space Station": "\u7a7a\u95f4\u7ad9", 
+  "Hospital": "\u533b\u9662", 
+  "Circus Tent": "\u9a6c\u620f\u56e2\u5e10\u7bf7", 
+  "Submarine": "\u6f5c\u8247", 
+  "Day Spa": "\u65e5\u95f4\u6c34\u7597", 
+  "Beach": "\u6d77\u6ee9", 
+  "Ocean Liner": "\u8fdc\u6d0b\u73ed\u8f6e", 
+  "Hotel": "\u9152\u5e97", 
+  "Supermarket": "\u8d85\u5e02", 
+  "University": "\u5927\u5b66", 
+  "Bank": "\u94f6\u884c", 
+  "School": "\u5b66\u6821", 
+  "Theater": "\u5267\u9662", 
+  "Restaurant": "\u9910\u5385", 
+  "Pirate Ship": "\u6d77\u76d7\u8239", 
+  "Corporate Party": "\u516c\u53f8\u805a\u4f1a", 
+  "Casino": "\u8d4c\u573a", 
+  "Passenger Train": "\u5ba2\u8fd0\u5217\u8f66", 
+  "Service Station": "\u670d\u52a1\u7ad9", 
+  "Military Base": "\u519b\u4e8b\u57fa\u5730", 
+  "Movie Studio": "\u7535\u5f71\u5236\u7247\u5382", 
+  "Embassy": "\u5927\u4f7f\u9986", 
+  "Airplane": "\u98de\u673a"
+ }, 
+ "roles": {
+  "Crusader Army": [
+   "Monk:\u548c\u5c1a", 
+   "Imprisoned Arab:\u88ab\u76d1\u7981\u7684\u963f\u62c9\u4f2f\u4eba", 
+   "Servant:\u4ec6\u4eba", 
+   "Bishop:\u4e3b\u6559", 
+   "Squire:\u4e61\u7ec5", 
+   "Archer:\u5f13\u7bad\u624b", 
+   "Knight:\u9a91\u58eb"
+  ], 
+  "Police Station": [
+   "Detective:\u4fa6\u63a2", 
+   "Lawyer:\u5f8b\u5e08", 
+   "Journalist:\u8bb0\u8005", 
+   "Criminalist:\u72af\u4eba", 
+   "Archivist:\u6863\u6848\u4fdd\u7ba1\u5458", 
+   "Patrol Officer:\u5de1\u8b66", 
+   "Criminal:\u5211\u4e8b"
+  ], 
+  "Polar Station": [
+   "Medic:\u533b\u751f", 
+   "Geologist:\u5730\u8d28\u5b66\u5bb6", 
+   "Expedition Leader:\u63a2\u9669\u9886\u8896", 
+   "Biologist:\u751f\u7269\u5b66\u5bb6", 
+   "Radioman:\u65e0\u7ebf\u7535\u5de5\u7a0b\u5e08", 
+   "Hydrologist:\u6587\u5b66\u5bb6", 
+   "Meteorologist:\u6c14\u8c61\u5b66\u5bb6"
+  ], 
+  "Space Station": [
+   "Engineer:\u5de5\u7a0b\u5e08", 
+   "Alien:\u5916\u661f\u4eba", 
+   "Space Tourist:\u592a\u7a7a\u65c5\u6e38\u8005", 
+   "Pilot:\u98de\u884c\u5458", 
+   "Commander:\u6307\u6325\u5b98", 
+   "Scientist:\u79d1\u5b66\u5bb6", 
+   "Doctor:\u533b\u751f"
+  ], 
+  "Hospital": [
+   "Nurse:\u62a4\u58eb", 
+   "Doctor:\u533b\u751f", 
+   "Anesthesiologist:\u9ebb\u9189\u5e08", 
+   "Intern:\u5b9e\u4e60\u751f", 
+   "Patient:\u75c5\u4eba", 
+   "Therapist:\u6cbb\u7597\u5e08", 
+   "Surgeon:\u533b\u751f"
+  ], 
+  "Circus Tent": [
+   "Acrobat:\u6742\u6280\u6f14\u5458", 
+   "Animal Trainer:\u52a8\u7269\u8bad\u7ec3\u5e08", 
+   "Magician:\u9b54\u672f\u5e08", 
+   "Visitor:\u53c2\u89c2\u8005", 
+   "Fire Eater:\u98df\u706b\u8005", 
+   "Clown:\u5c0f\u4e11", 
+   "Juggler:\u6742\u800d"
+  ], 
+  "Submarine": [
+   "Cook:\u53a8\u5e08", 
+   "Commander:\u6307\u6325\u5b98", 
+   "SONAR Technician:\u58f0\u7eb3\u6280\u672f\u5458", 
+   "Electronics Technician:\u7535\u5b50\u6280\u672f\u5458", 
+   "Sailor:\u6c34\u624b", 
+   "Radioman:\u65e0\u7ebf\u7535\u64cd\u4f5c\u5458", 
+   "Navigator:\u5bfc\u822a\u5458"
+  ], 
+  "Day Spa": [
+   "Customer:\u5ba2\u6237", 
+   "Stylist:\u9020\u578b\u5e08", 
+   "Masseuse:\u6309\u6469\u5e08", 
+   "Manicurist:\u7f8e\u7532\u5e08", 
+   "Makeup Artist:\u5316\u5986\u5e08", 
+   "Dermatologist:\u76ae\u80a4\u79d1\u533b\u751f", 
+   "Beautician:\u7f8e\u5bb9\u5e08"
+  ], 
+  "Beach": [
+   "Beach Waitress:\u5973\u670d\u52a1\u751f", 
+   "Kite Surfer:\u98ce\u7b5d\u51b2\u6d6a\u8005", 
+   "Lifeguard:\u6551\u751f\u5458", 
+   "Theif:\u5c0f\u5077", 
+   "Beach Goer:\u6d77\u6ee9\u6e38\u5ba2", 
+   "Beach Photographer:\u6d77\u6ee9\u6444\u5f71\u5e08", 
+   "Ice Cream Truck Driver:\u51b0\u6dc7\u6dcb\u5361\u8f66\u53f8\u673a"
+  ], 
+  "Ocean Liner": [
+   "Rich Passenger:\u5bcc\u6709\u65c5\u5ba2", 
+   "Cook:\u53a8\u5e08", 
+   "Captain:\u8239\u957f", 
+   "Bartender:\u9152\u4fdd", 
+   "Musician:\u97f3\u4e50\u5bb6", 
+   "Waiter:\u670d\u52a1\u5458", 
+   "Mechanic:\u673a\u68b0\u5e08"
+  ], 
+  "Hotel": [
+   "Doorman:\u95e8\u536b", 
+   "Security Guard:\u8b66\u536b", 
+   "Manager:\u7ecf\u7406", 
+   "Housekeeper:\u7ba1\u5bb6", 
+   "Customer:\u5ba2\u6237", 
+   "Bartender:\u9152\u4fdd", 
+   "Bellman:\u884c\u674e\u5458"
+  ], 
+  "Supermarket": [
+   "Customer:\u5ba2\u6237", 
+   "Cashier:\u51fa\u7eb3", 
+   "Butcher:\u5c60\u592b", 
+   "Janitor:\u770b\u95e8", 
+   "Security Guard:\u8b66\u536b", 
+   "Food Sample Demonstrator:\u98df\u54c1\u6837\u54c1\u6f14\u793a\u8005", 
+   "Shelf Stocker:\u8d27\u67b6\u88c5\u8d27\u5de5"
+  ], 
+  "University": [
+   "Graduate Student:\u7814\u7a76\u751f", 
+   "Professor:\u6559\u6388", 
+   "Dean:\u9662\u957f", 
+   "Psychologist:\u5fc3\u7406\u5b66\u5bb6", 
+   "Maintenance Man:\u7ef4\u4fee\u4eba\u5458", 
+   "Student:\u5b66\u751f", 
+   "Janitor:\u770b\u95e8"
+  ], 
+  "Bank": [
+   "Armored Car Driver:\u88c5\u7532\u8f66\u53f8\u673a", 
+   "Manager:\u7ecf\u7406", 
+   "Consultant:\u987e\u95ee", 
+   "Customer:\u5ba2\u6237", 
+   "Robber:\u5f3a\u76d7", 
+   "Security Guard:\u8b66\u536b", 
+   "Teller:\u51fa\u7eb3\u5458"
+  ], 
+  "School": [
+   "Gym Teacher:\u4f53\u80b2\u6559\u5e08", 
+   "Student:\u5b66\u751f", 
+   "Principal:\u6821\u957f", 
+   "Security Guard:\u8b66\u536b", 
+   "Janitor:\u770b\u95e8\u4eba", 
+   "Lunch Lady:\u5348\u9910\u5973\u58eb", 
+   "Maintenance Man:\u7ef4\u4fee\u4eba"
+  ], 
+  "Theater": [
+   "Coat Check Lady:\u5927\u8863\u68c0\u67e5\u5973\u58eb", 
+   "Prompter:\u53f0\u8bcd\u63d0\u793a\u5458", 
+   "Cashier:\u6536\u94f6\u5458", 
+   "Visitor:\u53c2\u89c2\u8005", 
+   "Director:\u5bfc\u6f14", 
+   "Actor:\u6f14\u5458", 
+   "Crewman:\u5de5\u4f5c\u4eba\u5458"
+  ], 
+  "Restaurant": [
+   "Musician:\u97f3\u4e50\u5bb6", 
+   "Customer:\u5ba2\u6237", 
+   "Bouncer:\u4fdd\u9556", 
+   "Hostess:\u5973\u670d\u52a1\u5458", 
+   "Head Chef:\u4e3b\u53a8", 
+   "Food Critic:\u98df\u54c1\u8bc4\u8bba\u5bb6", 
+   "Waiter:\u670d\u52a1\u5458"
+  ], 
+  "Pirate Ship": [
+   "Cook:\u53a8\u5e08", 
+   "Sailor:\u6c34\u624b", 
+   "Slave:\u5974\u96b6", 
+   "Cannoneer:\u70ae\u624b", 
+   "Bound Prisoner:\u6346\u7ed1\u56da\u72af", 
+   "Cabin Boy:\u8239\u4e0a\u4f8d\u8005", 
+   "Brave Captain:\u52c7\u6562\u7684\u961f\u957f"
+  ], 
+  "Corporate Party": [
+   "Entertainer:\u827a\u4eba", 
+   "Manager:\u7ecf\u7406", 
+   "Unwelcomed Guest:\u4e0d\u53d7\u6b22\u8fce\u7684\u5ba2\u4eba", 
+   "Owner:\u8463\u4e8b", 
+   "Secretary:\u79d8\u4e66\u957f", 
+   "Accountant:\u4f1a\u8ba1", 
+   "Delivery Boy:\u9001\u8d27\u5c0f\u5f1f"
+  ], 
+  "Casino": [
+   "Bartender:\u9152\u4fdd", 
+   "Head Security Guard:\u4fdd\u5b89\u4e3b\u7ba1", 
+   "Bouncer:\u4fdd\u9556", 
+   "Manager:\u7ecf\u7406", 
+   "Hustler:\u9a97\u5b50", 
+   "Dealer:\u7ecf\u9500\u5546", 
+   "Gambler:\u8d4c\u5f92"
+  ], 
+  "Passenger Train": [
+   "Mechanic:\u673a\u68b0\u5e08", 
+   "Border Patrol:\u8fb9\u5883\u5de1\u903b", 
+   "Train Attendant:\u706b\u8f66\u4e58\u52a1\u5458", 
+   "Passenger:\u4e58\u5ba2", 
+   "Restaurant Chef:\u9910\u5385\u53a8\u5e08", 
+   "Engineer:\u5de5\u7a0b\u5e08", 
+   "Stoker:\u9505\u7089\u4eba\u5458"
+  ], 
+  "Service Station": [
+   "Manager:\u7ecf\u7406", 
+   "Tire Specialist:\u8f6e\u80ce\u4e13\u5bb6", 
+   "Biker:\u81ea\u884c\u8f66", 
+   "Car Owner:\u8f66\u4e3b", 
+   "Car Wash Operator:\u6d17\u8f66\u64cd\u4f5c\u5458", 
+   "Electrician:\u7535\u5de5", 
+   "Auto Mechanic:\u6c7d\u8f66\u4fee\u7406\u5de5"
+  ], 
+  "Military Base": [
+   "Deserter:\u9003\u5175", 
+   "Colonel:\u4e0a\u6821", 
+   "Medic:\u533b\u751f", 
+   "Soldier:\u58eb\u5175", 
+   "Sniper:\u72d9\u51fb\u624b", 
+   "Officer:\u8d1f\u8d23\u4eba", 
+   "Tank Engineer:\u5766\u514b\u5de5\u7a0b\u5e08"
+  ], 
+  "Movie Studio": [
+   "Stuntman:\u7279\u6280\u6f14\u5458", 
+   "Sound Engineer:\u97f3\u54cd\u5de5\u7a0b\u5e08", 
+   "Cameraman:\u6444\u5f71\u5e08", 
+   "Director:\u5bfc\u6f14", 
+   "Costume Artist:\u670d\u88c5\u8bbe\u8ba1\u5e08", 
+   "Actor:\u6f14\u5458", 
+   "Producer:\u5236\u7247\u4eba"
+  ], 
+  "Embassy": [
+   "Security Guard:\u8b66\u536b", 
+   "Secretary:\u79d8\u4e66\u957f", 
+   "Ambassador:\u5927\u4f7f", 
+   "Government Official:\u653f\u5e9c\u5b98\u5458", 
+   "Tourist:\u65c5\u5ba2", 
+   "Refugee:\u96be\u6c11", 
+   "Diplomat:\u5916\u4ea4\u5b98"
+  ], 
+  "Airplane": [
+   "First Class Passenger:\u5934\u7b49\u8231\u4e58\u5ba2", 
+   "Air Marshall:\u7a7a\u519b\u4e2d\u5c06", 
+   "Mechanic:\u673a\u68b0\u5e08", 
+   "Economy Passenger:\u7ecf\u6d4e\u8231\u65c5\u5ba2", 
+   "Stewardess:\u7a7a\u59d0", 
+   "Captain:\u673a\u957f", 
+   "Co-Pilot:\u526f\u9a7e\u9a76"
+  ]
+ }
+}

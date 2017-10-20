@@ -5,6 +5,7 @@
 
 from flask import Flask, render_template, redirect, request, url_for, jsonify
 import spyfall_game
+import os
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = 'spyfallneverguess'
@@ -22,10 +23,11 @@ def create():
         return "INVALID_PLAYER_COUNT"
     upper = int(request.args.get("upper", (count+7)/8))
     lower = int(request.args.get("lower", 0))
+    locid = request.args.get("locid", "zh-cn-26")
     global spyfall
     if spyfall is None:
-        spyfall = spyfall_game.SpyFall("words.json")
-    id = spyfall.create(count, upper, lower)
+        spyfall = spyfall_game.SpyFalls()
+    id = spyfall.create(count, upper, lower, key = locid)
     return redirect(url_for(".play", id = id))
 
 @app.route("/play")

@@ -5,6 +5,50 @@
 
 import json
 import random
+import os
+class SpyFalls:
+    def __init__(self):
+        self.spyfalls = {}
+        self.games = {}
+
+    def gen_id(self):
+        upper = 1000000
+        lower = 1000
+        id = random.randint(lower, upper)
+        while str(id) in self.games:
+            id = random.randint(lower, upper)
+        return id
+
+    def game(self, id):
+        return self.games.get(str(id))
+
+    def create(self, player_count, upper, lower, key = "zh-cn-26"):
+        fname = "%s.json" % (key)
+        if not os.path.exists(fname):
+            key = "zh-cn-26"
+            fname = "%s.json" % key
+        if not key in self.spyfalls:
+            self.spyfalls[key] = SpyFall(fname)
+        id = self.gen_id()
+        game = self.spyfalls[key].create(player_count, upper, lower)
+        self.games[str(id)] = game
+        game["id"] = id
+        game["locid"] = key
+        return id
+
+    def print_game(self, id):
+        game = self.games.get(str(id))
+        for k,v in game.items():
+            print k
+            if k == "roles":
+                for role in v:
+                    print role
+            elif k == "players":
+                for i, player in enumerate(v):
+                    print i, player
+            else:
+                print v
+
 class SpyFall:
     def __init__(self, fname):
         data = json.load(open(fname))
@@ -23,14 +67,6 @@ class SpyFall:
         if len(self.roles) < 3:
             print "Error Handle"
             return
-
-    def gen_id(self):
-        upper = 1000000
-        lower = 1000
-        id = random.randint(lower, upper)
-        while str(id) in self.games:
-            id = random.randint(lower, upper)
-        return id
 
     def create(self, player_count, upper, lower = 0):
         game = {}
@@ -52,28 +88,10 @@ class SpyFall:
         game["players"] = players
         game["roles"] = roles
         game["scenes"] = self.scenes
-        game["id"] = self.gen_id()
-        self.games[str(game["id"])] = game
-        return game["id"]
-
-    def game(self, id):
-        return self.games.get(str(id))
-
-    def print_game(self, id):
-        game = self.games.get(str(id))
-        for k,v in game.items():
-            print k
-            if k == "roles":
-                for role in v:
-                    print role
-            elif k == "players":
-                for i, player in enumerate(v):
-                    print i, player
-            else:
-                print v
+        return game
 
 if __name__ == "__main__":
-    spyfall = SpyFall("words.json")
-    ids = [spyfall.create(5,1,1), spyfall.create(9,2), spyfall.create(15,3,1)]
+    spyfall = SpyFalls()
+    ids = [spyfall.create(5,1,1, "zh-cn-26"), spyfall.create(9,2,0,"zh-tw-52"), spyfall.create(15,3,1,"full")]
     for id in ids:
         spyfall.print_game(id)
