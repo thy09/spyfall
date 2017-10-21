@@ -67,8 +67,12 @@ def set_cookie():
     cookie = request.args.get("cookie")
     if not cookie:
         return "FAIL"
-    resp = app.make_response("OK")
-    expire_time = datetime.datetime.now() + datetime.timedelta(seconds = 10)
+    game = spyfall.game(id)
+    if game["occupied"][int(cookie)]:
+        return jsonify({"status":"OCCUPIED"})
+    game["occupied"][int(cookie)] = True
+    resp = app.make_response(jsonify({"status":"success"}))
+    expire_time = datetime.datetime.now() + datetime.timedelta(minutes = 30)
     resp.set_cookie("ID%s" % id, value = cookie)
     return resp
 

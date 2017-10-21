@@ -83,8 +83,11 @@ var get_my_role = function(players, roles, scene, idx){
         $(".words").append($("<p>共有"+spy_count+"名间谍</p>"));
     }
 }
-var add_players = function(players, roles, scenes, scene, spy_count){
+var add_players = function(players, roles, scenes, scene, spy_count, occupied){
     for (var i in players){
+        if (occupied[i]){
+            continue;
+        }
         var player = players[i];
         var div = $("<div></div>").addClass("word").attr("id", i).html("<p>" + i + "</p>");
         $(".words").append(div);
@@ -96,9 +99,18 @@ var add_players = function(players, roles, scenes, scene, spy_count){
             if (!confirm("确定选择"+idx+"号？")){
                 return;
             }
-            $(".words div").remove();
-            get_my_role(players, roles, scene, idx);
-            $.get("/set_cookie"+location.search+"&cookie="+idx);
+            $.get("/set_cookie"+location.search+"&cookie="+idx,"", function(res){
+                if (res.status != "success"){
+                    if (res.status == "OCCUPIED"){
+                        alert(idx+"号已经被别人选啦!");
+                    }else{
+                        alert(res.status);
+                    }
+                    return;
+                }
+                $(".words div").remove();
+                get_my_role(players, roles, scene, idx);
+            });
         });
     });
 }
@@ -109,7 +121,7 @@ $(document).ready(function(){
         if (data.my_idx !== undefined){
             get_my_role(game.players, game.roles, game.loc, data.my_idx);
         }else{
-            add_players(game.players, game.roles, game.scenes, game.loc, game.spy_count, game.my_idx);
+            add_players(game.players, game.roles, game.scenes, game.loc, game.spy_count, game.occupied);
         }
         var max_count = 30;
         var max_scene = 50;

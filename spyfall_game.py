@@ -34,6 +34,7 @@ class SpyFalls:
         self.games[str(id)] = game
         game["id"] = id
         game["locid"] = key
+        game["occupied"] = [False] * player_count
         return id
 
     def get_roles(self, locid, scene):
