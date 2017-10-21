@@ -48,9 +48,10 @@ def status():
     id = request.args.get("id", 0)
     game = spyfall.game(id)
     cookie = request.cookies.get("ID%s" % (id))
+    data = {"game":game}
     if cookie is not None:
-        game["my_idx"] = cookie
-    return jsonify(game)
+        data["my_idx"] = cookie
+    return jsonify(data)
 
 @app.route("/roles")
 def roles():

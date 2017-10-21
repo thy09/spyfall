@@ -103,10 +103,11 @@ var add_players = function(players, roles, scenes, scene, spy_count){
     });
 }
 $(document).ready(function(){
-    $.get("/status"+location.search,"",function(game){
+    $.get("/status"+location.search,"",function(data){
+        var game = data.game;
         console.log(game);
-        if (game.my_idx !== undefined){
-            get_my_role(game.players, game.roles, game.loc, game.my_idx);
+        if (data.my_idx !== undefined){
+            get_my_role(game.players, game.roles, game.loc, data.my_idx);
         }else{
             add_players(game.players, game.roles, game.scenes, game.loc, game.spy_count, game.my_idx);
         }
