@@ -52,8 +52,8 @@ def roles():
     locid = request.args.get("locid")
     scene = request.args.get("scene")
     data = spyfall.get_roles(locid, scene)
-    return jsonify(data)
+    return jsonify({"data":data})
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host = "0.0.0.0", port = 24987)
+    app.run(host = "0.0.0.0", port = 24986)
