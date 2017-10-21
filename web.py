@@ -4,7 +4,9 @@
 # Created By: Heyi Tang
 
 from flask import Flask, render_template, redirect, request, url_for, jsonify
+from flask import g
 import spyfall_game
+import datetime
 import os
 
 app = Flask(__name__)
@@ -45,6 +47,9 @@ def play():
 def status():
     id = request.args.get("id", 0)
     game = spyfall.game(id)
+    cookie = request.cookies.get("ID%s" % (id))
+    if cookie is not None:
+        game["my_idx"] = cookie
     return jsonify(game)
 
 @app.route("/roles")
@@ -53,6 +58,18 @@ def roles():
     scene = request.args.get("scene")
     data = spyfall.get_roles(locid, scene)
     return jsonify({"data":data})
+
+@app.route("/set_cookie")
+def set_cookie():
+    g.language = ("zh-cn")
+    id = request.args.get("id")
+    cookie = request.args.get("cookie")
+    if not cookie:
+        return "FAIL"
+    resp = app.make_response("OK")
+    expire_time = datetime.datetime.now() + datetime.timedelta(seconds = 10)
+    resp.set_cookie("ID%s" % id, value = cookie)
+    return resp
 
 if __name__ == "__main__":
     app.debug = True

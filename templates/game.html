@@ -69,6 +69,20 @@ var new_game = function(){
     var url = "./create?count="+count+"&upper="+upper+"&lower="+lower+"&locid="+locid + "&scenecount="+scenecount+"&spyschool="+spyschool;
     window.location.href = url;
 }
+var get_my_role = function(players, roles, scene, idx){
+    var div = $("<div class='p'></div>").text("编号"+idx+"的身份是:" + players[idx]);     
+    $(".words").prepend(div);
+    if (players[idx].indexOf("Spy")<0){
+        $(".words").prepend($("<p>当前场景为: "+ scene +"</p>"))
+        $(".words").append($("<h3>该场景角色如下</h3>"));
+        for (var j in roles){
+            var div = $("<p></p>").text(roles[j]);
+            $(".words").append(div);
+        }
+    }else{
+        $(".words").append($("<p>共有"+spy_count+"名间谍</p>"));
+    }
+}
 var add_players = function(players, roles, scenes, scene, spy_count){
     for (var i in players){
         var player = players[i];
@@ -83,26 +97,19 @@ var add_players = function(players, roles, scenes, scene, spy_count){
                 return;
             }
             $(".words div").remove();
-            var div = $("<div class='p'></div>").text("编号"+idx+"的身份是:" + players[idx]);
-            $(".words").prepend(div);
-            if (players[idx].indexOf("Spy")<0){
-                $(".words").prepend($("<p>当前场景为: "+ scene +"</p>"))
-                $(".words").append($("<h3>该场景角色如下</h3>"));
-                for (var j in roles){
-                    var div = $("<p></p>").text(roles[j]);
-                    $(".words").append(div);
-                }
-            }else{
-                $(".words").append($("<p>共有"+spy_count+"名间谍</p>"));
-            }
-            $(".words").append($("<p></p>"));
+            get_my_role(players, roles, scene, idx);
+            $.get("/set_cookie"+location.search+"&cookie="+idx);
         });
     });
 }
 $(document).ready(function(){
     $.get("/status"+location.search,"",function(game){
         console.log(game);
-        add_players(game.players, game.roles, game.scenes, game.loc, game.spy_count);
+        if (game.my_idx !== undefined){
+            get_my_role(game.players, game.roles, game.loc, game.my_idx);
+        }else{
+            add_players(game.players, game.roles, game.scenes, game.loc, game.spy_count, game.my_idx);
+        }
         var max_count = 30;
         var max_scene = 50;
         for (var i=2;i<=max_count;i++){
