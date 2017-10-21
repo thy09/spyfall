@@ -34,7 +34,8 @@ class SpyFalls:
         return uid
 
     def update_user(self, uid):
-        self.users[uid] = datetime.datetime.now() + datetime.timedelta(seconds = 1200)
+        expire_time = 1200
+        self.users[uid] = datetime.datetime.now() + datetime.timedelta(seconds = expire_time)
 
     def exist_user(self, uid):
         if not uid in self.users:

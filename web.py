@@ -86,6 +86,12 @@ def sit():
     else:
         return jsonify({"status":"OCCUPIED"})
 
+@app.route("/show_users")
+def show_users():
+    result = {}
+    for k,v in spyfall.users.items():
+        result[k] = str(v)
+    return jsonify(result)
 if __name__ == "__main__":
     app.debug = True
     app.run(host = "0.0.0.0", port = 24986)

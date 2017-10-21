@@ -69,7 +69,7 @@ var new_game = function(){
     var url = "./create?count="+count+"&upper="+upper+"&lower="+lower+"&locid="+locid + "&scenecount="+scenecount+"&spyschool="+spyschool;
     window.location.href = url;
 }
-var get_my_role = function(players, roles, scene, idx){
+var get_my_role = function(players, roles, scene, idx, spy_count){
     var div = $("<div class='p'></div>").text("编号"+idx+"的身份是:" + players[idx]);     
     $(".words").prepend(div);
     if (players[idx].indexOf("Spy")<0){
@@ -109,7 +109,7 @@ var add_players = function(players, roles, scenes, scene, spy_count, occupied){
                     return;
                 }
                 $(".words div").remove();
-                get_my_role(players, roles, scene, idx);
+                get_my_role(players, roles, scene, idx, spy_count);
             });
         });
     });
@@ -118,8 +118,9 @@ $(document).ready(function(){
     $.get("/status"+location.search,"",function(data){
         var game = data.game;
         console.log(game);
+        $("title").text("Spyfall:"+game.id);
         if (data.my_idx !== undefined){
-            get_my_role(game.players, game.roles, game.loc, data.my_idx);
+            get_my_role(game.players, game.roles, game.loc, data.my_idx, game.spy_count);
         }else{
             add_players(game.players, game.roles, game.scenes, game.loc, game.spy_count, game.occupied);
         }
