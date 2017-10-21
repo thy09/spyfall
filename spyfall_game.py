@@ -6,10 +6,13 @@
 import json
 import random
 import os
+import datetime
+
 class SpyFalls:
     def __init__(self):
         self.spyfalls = {}
         self.games = {}
+        self.users = {}
 
     def gen_id(self):
         upper = 1000000
@@ -21,6 +24,37 @@ class SpyFalls:
 
     def game(self, id):
         return self.games.get(str(id))
+
+    def new_user(self):
+        upper = 99999999
+        lower = 10000000
+        uid = str(random.randint(lower, upper))
+        while uid in self.users:
+            uid = str(random.randint(lower, upper))
+        return uid
+
+    def update_user(self, uid):
+        self.users[uid] = datetime.datetime.now() + datetime.timedelta(seconds = 1200)
+
+    def exist_user(self, uid):
+        if not uid in self.users:
+            return False
+        expire = self.users.get(uid)
+        if expire <= datetime.datetime.now():
+            self.users.pop(uid)
+            return False
+        return True
+
+    def user_sit(self, id, idx, userid):
+        game = self.game(id)
+        if not game:
+            return False
+        idx = int(idx)
+        cur = game["occupied"][idx]
+        if cur is not None and self.exist_user(cur):
+            return False
+        game["occupied"][idx] = userid
+        return True
 
     def create(self, player_count, upper, lower, scene_count = 10, key = "zh-cn-26", spyschool = 0):
         fname = "%s.json" % (key)

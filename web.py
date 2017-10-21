@@ -14,6 +14,24 @@ app.config["SECRET_KEY"] = 'spyfallneverguess'
 
 spyfall = None
 
+@app.before_request
+def before_request():
+    global spyfall
+    if spyfall is None:
+        spyfall = spyfall_game.SpyFalls()
+    uid = request.cookies.get("UID")
+    if not uid or not spyfall.exist_user(uid):
+        uid = spyfall.new_user()
+    spyfall.update_user(uid)
+    g.uid = uid
+
+@app.after_request
+def after_request(resp):
+    uid = request.cookies.get("UID")
+    if uid != g.uid:
+        resp.set_cookie("UID", g.uid)
+    return resp
+
 @app.route("/")
 def index():
     return redirect(url_for(".create", count = 8))
@@ -28,9 +46,6 @@ def create():
     locid = request.args.get("locid", "zh-cn-26")
     scene_count = int(request.args.get("scenecount", 10))
     spy_school = int(request.args.get("spyschool", 0))
-    global spyfall
-    if spyfall is None:
-        spyfall = spyfall_game.SpyFalls()
     id = spyfall.create(count, upper, lower, scene_count, key = locid, spyschool = spy_school)
     return redirect(url_for(".play", id = id))
 
@@ -47,10 +62,12 @@ def play():
 def status():
     id = request.args.get("id", 0)
     game = spyfall.game(id)
-    cookie = request.cookies.get("ID%s" % (id))
     data = {"game":game}
-    if cookie is not None:
-        data["my_idx"] = cookie
+    for idx, uid in enumerate(game["occupied"]):
+        if uid == g.uid:
+            data["my_idx"] = idx
+        if not spyfall.exist_user(uid):
+            game["occupied"][idx] = None
     return jsonify(data)
 
 @app.route("/roles")
@@ -60,21 +77,14 @@ def roles():
     data = spyfall.get_roles(locid, scene)
     return jsonify({"data":data})
 
-@app.route("/set_cookie")
-def set_cookie():
-    g.language = ("zh-cn")
+@app.route("/sit")
+def sit():
     id = request.args.get("id")
-    cookie = request.args.get("cookie")
-    if not cookie:
-        return "FAIL"
-    game = spyfall.game(id)
-    if game["occupied"][int(cookie)]:
+    idx = request.args.get("idx")
+    if spyfall.user_sit(id, idx, g.uid):
+        return jsonify({"status":"success"})
+    else:
         return jsonify({"status":"OCCUPIED"})
-    game["occupied"][int(cookie)] = True
-    resp = app.make_response(jsonify({"status":"success"}))
-    expire_time = datetime.datetime.now() + datetime.timedelta(minutes = 30)
-    resp.set_cookie("ID%s" % id, value = cookie)
-    return resp
 
 if __name__ == "__main__":
     app.debug = True

@@ -99,7 +99,7 @@ var add_players = function(players, roles, scenes, scene, spy_count, occupied){
             if (!confirm("确定选择"+idx+"号？")){
                 return;
             }
-            $.get("/set_cookie"+location.search+"&cookie="+idx,"", function(res){
+            $.get("/sit"+location.search+"&idx="+idx,"", function(res){
                 if (res.status != "success"){
                     if (res.status == "OCCUPIED"){
                         alert(idx+"号已经被别人选啦!");
