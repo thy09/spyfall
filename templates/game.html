@@ -3,11 +3,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
 <title>Spyfall</title>
-<link rel="stylesheet" href="./static/spyfall.css?v=20171020v1"></link>
+<link rel="stylesheet" href="./static/spyfall.css?v=20171022v1"></link>
 </head>
 <body>
     <div style="display:none"><img src='./static/logo.jpg'></img></div>
     <div><img width = "100%" src = "./static/locations.jpg"></div>
+    <div>请选择自己的编号坐下!</div>
     <div class="words"></div>
     <div class="btn" onclick = new_game()>新建游戏</div>
     <div class="newgame">
@@ -85,15 +86,16 @@ var get_my_role = function(players, roles, scene, idx, spy_count){
 }
 var add_players = function(players, roles, scenes, scene, spy_count, occupied){
     for (var i in players){
-        if (occupied[i]){
-            continue;
-        }
         var player = players[i];
-        var div = $("<div></div>").addClass("word").attr("id", i).html("<p>" + i + "</p>");
+        var div = $("<div></div>").addClass("word").attr("id", i).html("<p>" + i + "号</p>");
         $(".words").append(div);
     }
     $(".words").append("<div style='clear:both'></div>");
     $(".words .word").each(function(idx, elm){
+        if (occupied[idx]){
+            $(elm).addClass("occupied");
+            return;
+        }
         $(elm).click(function(){
             var idx = parseInt($(elm).attr("id"));
             if (!confirm("确定选择"+idx+"号？")){

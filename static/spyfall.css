@@ -131,3 +131,6 @@ input{
     font-size: 18px;
     margin: 5px;
 }
+.word.occupied{
+    background: #ccc;
+}
