@@ -105,6 +105,8 @@ var add_players = function(players, roles, scenes, scene, spy_count, occupied){
                 if (res.status != "success"){
                     if (res.status == "OCCUPIED"){
                         alert(idx+"号已经被别人选啦!");
+                        $(elm).addClass("occupied");
+                        $(elm).unbind("click");
                     }else{
                         alert(res.status);
                     }
